@@ -1,0 +1,19 @@
+version: '3.8'
+
+volumes:
+    extention_node-volume:
+
+services:
+    client:
+        image: vuecli:1
+        build: 
+            context: .
+            dockerfile: client.dockerfile
+        container_name: chrome-extenstion-work
+        ports:
+            - "8080:8080"
+        volumes:
+            - extention_node-volume:/app/node/node_modules
+            - ./copy_url_markdown_style_extention:/app/copy_url_markdown_style_extention
+        stdin_open: true
+        tty: true
