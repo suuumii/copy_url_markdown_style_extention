@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "copy_url_as_markdown_style",
   "version": "1.0.0",
   "description": "Click on the icon to copy the URL of the open web page in markdown format to the clipboard",
@@ -7,11 +7,11 @@
     "128": "icon_128.png"
   },
   "permissions": [
-    "tabs",
-    "storage"
+    "tabs"
   ],
-  "browser_action": {
+  "action": {
     "default_title": "copyUrlMarkdownStyle",
     "default_popup": "index.html"
   }
+  
 }
