@@ -25,30 +25,37 @@ try {
 
   let decodedUrl = decodeURI(tab.url);
 
-  copyClipBord(decodedUrl);
+  let str = getUrlAsMarkdown(decodedUrl, tab.title);
+
+  copyClipBord(str);
 
   copyStatus.value = "successful!!";
-  copyText.value = decodedUrl;
-} catch {
+  copyText.value = str;
+} catch(e) {
+  // console.log(e);
   copyStatus.value = "error";
 }
 
 function copyClipBord(textVal) {
   var copyFrom = document.createElement("textarea");
   copyFrom.textContent = textVal;
- 
+
   var bodyElm = document.getElementsByTagName("body")[0];
   bodyElm.appendChild(copyFrom);
- 
+
   copyFrom.select();
-  var retVal = document.execCommand('copy');
+  var retVal = document.execCommand("copy");
   bodyElm.removeChild(copyFrom);
   return retVal;
+}
+
+function getUrlAsMarkdown(url, title) {
+  return "[" + title + "](" + url + ")";
 }
 </script>
 
 <style scoped>
-  .main-content{
-    text-align: left;
-  }
+.main-content {
+  text-align: left;
+}
 </style>
